@@ -57,11 +57,13 @@ if not defined WEKNORA_API_KEY (
 
 ## 5. 验收标准
 
-- [ ] WeKnora 侧已吊销旧 Key，并确认旧 Key 调用返回 401/403
-- [ ] 三个脚本中不再出现 Key 明文，改为从环境变量读取
-- [ ] `git grep -n "sk-NEE3"` 在工作区无命中（历史提交中的残留依靠轮换失效，不做历史重写）
-- [ ] `.gitignore` 覆盖本地环境文件，仓库内提供 `.env.local.example`（占位值）
+- [ ] WeKnora 侧已吊销旧 Key，并确认旧 Key 调用返回 401/403 ← **仅你能执行**
+- [x] 三个脚本中不再出现 Key 明文，改为从环境变量读取（未设置时给出提示并继续，助手不可用但门户正常）
+- [x] `git grep -n "sk-NEE3"` 在工作区无命中（历史提交中的残留依靠轮换失效，不做历史重写）
+- [x] `.gitignore` 覆盖本地环境文件（`.env`、`.env.*`），仓库内提供 `.env.local.example`（占位值）
 - [ ] 旧 Key 的吊销记录留档（谁、何时、依据）
+
+**代码侧落点（2026-10-18）：** `.env.local.example`（新增）、`.gitignore`（补 `.env*` 规则）、`scripts/run-backend.cmd`、`restart-backend.cmd`、`start-all.bat`（移除明文 Key，改为从环境读取 `WEKNORA_API_KEY`，未设置时提示并继续）、根 `README.md`（指引到示例文件）。
 
 ## 6. 不包含
 
